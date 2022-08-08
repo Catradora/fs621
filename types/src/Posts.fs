@@ -58,10 +58,18 @@ module Posts =
             | Before of int
             | After of int
 
+        type Extension =
+            | PNG
+            | JPG
+            | GIF
+            | SWF
+            | WEBM
+
+
         type File =
             { width: int
               height: int
-              ext: string
+              ext: Extension
               size: int
               md5: string
               url: string }
@@ -71,12 +79,34 @@ module Posts =
               height: int
               url: string }
 
+        type Type = Video
+
+        type Url = Option<string>
+
+        type Original =
+            { ``type``: Type
+              height: int
+              width: int
+              urls: seq<Url> }
+
+        type AlternateVideo =
+            { ``type``: Type
+              height: int
+              width: int
+              urls: seq<Url> }
+
+        type Alternates =
+            { original: Original
+              ``720p``: AlternateVideo
+              ``480p``: AlternateVideo }
+
+
         type Sample =
             { has: bool
               width: int
               height: int
               url: string
-              alternates: string }
+              alternates: Alternates }
 
         type Score = { up: int; down: int; total: int }
 
@@ -85,16 +115,18 @@ module Posts =
               tags: Option<seq<string>>
               page: Option<Page> }
 
+        type LockedTag = Conditional_DNP
+
         type ListResponseFields =
             { id: int
               created_at: DateTime
-              updated_at: DateTime
-              file: seq<File>
-              preview: seq<Preview>
-              sample: seq<Sample>
+              updated_at: Option<DateTime>
+              file: File
+              preview: Preview
+              sample: Sample
               score: Score
               tags: General.Tags
-              locked_tags: seq<General.Tag>
+              locked_tags: seq<LockedTag>
               change_seq: int
               flags: General.Flags
               rating: Rating
@@ -106,6 +138,6 @@ module Posts =
               uploader_id: int
               description: string
               comment_count: int
-              is_favorited: Option<bool>
+              is_favorited: bool
               has_notes: bool
               duration: Option<int> }

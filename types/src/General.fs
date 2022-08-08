@@ -25,6 +25,7 @@ module General =
           Note_Locked: Flag
           Status_Locked: Flag
           Rating_Locked: Flag
+          Comment_Disabled: Flag
           Deleted: Flag }
 
     type Relationship =
