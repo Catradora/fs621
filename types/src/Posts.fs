@@ -141,3 +141,21 @@ module Posts =
               is_favorited: bool
               has_notes: bool
               duration: Option<int> }
+
+    module Flag =
+        open System
+
+        type FlagRequestParameters =
+            { post_id: int
+              creator_id: int
+              creator_name: string }
+
+        type FlagResponseFields =
+            { id: int
+              created_at: DateTime
+              post_id: int
+              reason: string
+              is_resolved: bool
+              updated_at: option<DateTime>
+              is_deletion: bool
+              category: string }
