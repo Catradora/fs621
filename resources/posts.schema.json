@@ -1,0 +1,489 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome6",
+  "definitions": {
+    "Welcome6": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Posts:": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Posts"
+          }
+        }
+      },
+      "required": ["Posts:"],
+      "title": "Welcome6"
+    },
+    "Posts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "file": {
+          "$ref": "#/definitions/File"
+        },
+        "preview": {
+          "$ref": "#/definitions/Preview"
+        },
+        "sample": {
+          "$ref": "#/definitions/Sample"
+        },
+        "score": {
+          "$ref": "#/definitions/Score"
+        },
+        "tags": {
+          "$ref": "#/definitions/Tags"
+        },
+        "locked_tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LockedTag"
+          }
+        },
+        "change_seq": {
+          "type": "integer"
+        },
+        "flags": {
+          "$ref": "#/definitions/Flags"
+        },
+        "rating": {
+          "$ref": "#/definitions/Rating"
+        },
+        "fav_count": {
+          "type": "integer"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "qt-uri-protocols": ["https"],
+            "qt-uri-extensions": [
+              ".gif",
+              ".html",
+              ".j",
+              ".jpeg",
+              ".jpg",
+              ".jpg:orig",
+              ".mp4",
+              ".php",
+              ".png"
+            ]
+          }
+        },
+        "pools": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "relationships": {
+          "$ref": "#/definitions/Relationships"
+        },
+        "approver_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uploader_id": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string",
+          "qt-uri-protocols": ["https"]
+        },
+        "comment_count": {
+          "type": "integer"
+        },
+        "is_favorited": {
+          "type": "boolean"
+        },
+        "has_notes": {
+          "type": "boolean"
+        },
+        "duration": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "approver_id",
+        "change_seq",
+        "comment_count",
+        "created_at",
+        "description",
+        "duration",
+        "fav_count",
+        "file",
+        "flags",
+        "has_notes",
+        "id",
+        "is_favorited",
+        "locked_tags",
+        "pools",
+        "preview",
+        "rating",
+        "relationships",
+        "sample",
+        "score",
+        "sources",
+        "tags",
+        "updated_at",
+        "uploader_id"
+      ],
+      "title": "Posts"
+    },
+    "File": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "ext": {
+          "$ref": "#/definitions/EXT"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "md5": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": ["https"],
+          "qt-uri-extensions": [".gif", ".jpg", ".png", ".swf", ".webm"]
+        }
+      },
+      "required": ["ext", "height", "md5", "size", "url", "width"],
+      "title": "File"
+    },
+    "Flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pending": {
+          "type": "boolean"
+        },
+        "flagged": {
+          "type": "boolean"
+        },
+        "note_locked": {
+          "type": "boolean"
+        },
+        "status_locked": {
+          "type": "boolean"
+        },
+        "rating_locked": {
+          "type": "boolean"
+        },
+        "comment_disabled": {
+          "type": "boolean"
+        },
+        "deleted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "comment_disabled",
+        "deleted",
+        "flagged",
+        "note_locked",
+        "pending",
+        "rating_locked",
+        "status_locked"
+      ],
+      "title": "Flags"
+    },
+    "Preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": ["https"],
+          "qt-uri-extensions": [".jpg", ".png"]
+        }
+      },
+      "required": ["height", "url", "width"],
+      "title": "Preview"
+    },
+    "Relationships": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "parent_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "has_children": {
+          "type": "boolean"
+        },
+        "has_active_children": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "children",
+        "has_active_children",
+        "has_children",
+        "parent_id"
+      ],
+      "title": "Relationships"
+    },
+    "Sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "has": {
+          "type": "boolean"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": ["https"],
+          "qt-uri-extensions": [".gif", ".jpg", ".png", ".swf"]
+        },
+        "alternates": {
+          "$ref": "#/definitions/Alternates"
+        }
+      },
+      "required": ["alternates", "has", "height", "url", "width"],
+      "title": "Sample"
+    },
+    "Alternates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "original": {
+          "$ref": "#/definitions/Original"
+        },
+        "720p": {
+          "$ref": "#/definitions/0_P"
+        },
+        "480p": {
+          "$ref": "#/definitions/0_P"
+        }
+      },
+      "required": [],
+      "title": "Alternates"
+    },
+    "0_P": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/Type"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "qt-uri-protocols": ["https"],
+            "qt-uri-extensions": [".mp4", ".webm"]
+          }
+        }
+      },
+      "required": ["height", "type", "urls", "width"],
+      "title": "0_P"
+    },
+    "Original": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/Type"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "format": "uri",
+                "qt-uri-protocols": ["https"],
+                "qt-uri-extensions": [".mp4"]
+              }
+            ]
+          }
+        }
+      },
+      "required": ["height", "type", "urls", "width"],
+      "title": "Original"
+    },
+    "Score": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "up": {
+          "type": "integer"
+        },
+        "down": {
+          "type": "integer"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "required": ["down", "total", "up"],
+      "title": "Score"
+    },
+    "Tags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "general": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "character": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "copyright": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "artist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "invalid": {
+          "type": "array",
+          "items": {}
+        },
+        "lore": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "meta": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "artist",
+        "character",
+        "copyright",
+        "general",
+        "invalid",
+        "lore",
+        "meta",
+        "species"
+      ],
+      "title": "Tags"
+    },
+    "EXT": {
+      "type": "string",
+      "enum": ["png", "jpg", "gif", "swf", "webm"],
+      "title": "EXT"
+    },
+    "LockedTag": {
+      "type": "string",
+      "enum": ["conditional_dnp"],
+      "title": "LockedTag"
+    },
+    "Rating": {
+      "type": "string",
+      "enum": ["e", "s", "q"],
+      "title": "Rating"
+    },
+    "Type": {
+      "type": "string",
+      "enum": ["video"],
+      "title": "Type"
+    }
+  }
+}
